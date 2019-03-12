@@ -27,8 +27,12 @@ tailrec fun generateReactedList(chars: MutableList<Char>) : List<Char> {
     }
 }
 
+fun isEqualCaseInsensitive(a: Char, b: Char) : Boolean {
+    return (a == b) || (a + 32 == b) || (a - 32 == b)
+}
+
 fun reactionLengthForLetter(chars: List<Char>, letter: Char) : Int {
-    val filteredChars = chars.filter{ it != letter && it != letter + 32 }
+    val filteredChars = chars.filter { !isEqualCaseInsensitive(letter, it)}
     return generateReactedList(filteredChars.toMutableList()).count()
 }
 

@@ -36,11 +36,10 @@ fun reactionLengthForLetter(chars: List<Char>, letter: Char) : Int {
     return generateReactedList(filteredChars.toMutableList()).count()
 }
 
-fun minimumReactionLength(chars: List<Char>) : Int? {
+fun minimumReactionLength(chars: List<Char>) : Int {
     return REACTING_LETTERS
         .map { reactionLengthForLetter(chars, it) }
-        .min()
-
+        .min() ?: 0
 }
 
 fun main() {
